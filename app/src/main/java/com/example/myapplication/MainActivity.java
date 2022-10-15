@@ -18,7 +18,12 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+    static int treeNum = 0;
+    public void changeTree (View view) {
+        TextView treeCounter = findViewById(R.id.treeCounter);
+        treeCounter.setText("Number of trees: " + treeNum++);
 
+    }
     public void onBtnClick(View view) {
         TextView txtCameronTest = findViewById(R.id.txtCameronTest);
         EditText txtResponse = findViewById(R.id.txtResponse);
