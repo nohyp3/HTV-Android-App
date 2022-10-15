@@ -60,6 +60,7 @@ public class MainActivity extends AppCompatActivity {
         }
         else {
             Toast.makeText(MainActivity.this, "Permission already granted", Toast.LENGTH_SHORT).show();
+            cameraPerm.setVisibility(View.GONE);
         }
     }
     @Override
