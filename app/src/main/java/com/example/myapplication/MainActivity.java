@@ -1,33 +1,50 @@
 package com.example.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
-import android.content.SharedPreferences;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+
 import android.os.Bundle;
-import android.text.Editable;
-import android.view.View;
-import android.widget.EditText;
-import android.widget.TextView;
+
+import com.example.myapplication.databinding.ActivityMainBinding;
+
 
 public class MainActivity extends AppCompatActivity {
 
-    @Override
+    ActivityMainBinding binding;
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main   );
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+        replaceFragment(new HomeFragment());
 
+        binding.navSwitch.setOnItemSelectedListener(item -> {
 
+            switch (item.getItemId()) {
+                case R.id.menHome:
+                    replaceFragment(new HomeFragment());
+                    break;
+                case R.id.menWorkout:
+                    replaceFragment(new WorkoutFragment());
+                    break;
+                case R.id.menClick:
+                    replaceFragment(new ClickerFragment());
+                    break;
+            }
+
+            return true;
+        });
 
     }
-    static int treeNum = 0;
-    public void changeTree (View view) {
-        TextView treeCounter = findViewById(R.id.treeCounter);
-        treeCounter.setText("Number of trees: " + treeNum++);
+
+    private void replaceFragment(Fragment fragment) {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.frameLayout, fragment);
+        fragmentTransaction.commit();
 
     }
-    public void onBtnClick(View view) {
-        TextView txtCameronTest = findViewById(R.id.txtCameronTest);
-        EditText txtResponse = findViewById(R.id.txtResponse);
-        txtCameronTest.setText("Hi you are" + txtResponse.getText().toString());
 
-    }
 }
