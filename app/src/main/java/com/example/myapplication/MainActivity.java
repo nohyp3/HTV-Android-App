@@ -28,8 +28,17 @@ public class MainActivity extends AppCompatActivity {
         equals.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                int firstNum = Integer.parseInt(firstNumber.getText().toString());
-                int secondNum = Integer.parseInt(secondNumber.getText().toString());
+                int firstNum, secondNum;
+                try {
+                    firstNum = Integer.parseInt(firstNumber.getText().toString());
+                } catch(NumberFormatException e){
+                    firstNum = 0;
+                }
+                try {
+                    secondNum = Integer.parseInt(secondNumber.getText().toString());
+                } catch(NumberFormatException e){
+                    secondNum = 0;
+                }
 
                 int operationDecision = operators.getCheckedRadioButtonId();
 
