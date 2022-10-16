@@ -16,7 +16,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
+//this is camera
 public class MainActivity3 extends AppCompatActivity {
     private static final int picId = 1;
     private static final int CAMERA_PERMISSION_CODE = 100;
