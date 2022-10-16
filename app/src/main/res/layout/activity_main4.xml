@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:onClick="changeView"
     tools:context=".MainActivity">
 
     <Button
@@ -26,8 +25,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="3dp"
         android:layout_marginBottom="5dp"
-        android:onClick="changeTree"
         android:text="Plant Tree"
+        android:onClick= "changeTree"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -48,7 +47,7 @@
         android:layout_marginStart="30dp"
         android:layout_marginTop="30dp"
         android:fontFamily="sans-serif-black"
-        android:text="Posicise"
+        android:text="Second Page"
         android:textSize="34sp"
         android:textStyle="bold|italic"
         app:layout_constraintStart_toStartOf="parent"
@@ -74,15 +73,6 @@
         android:text="Camera Permission"
         tools:layout_editor_absoluteX="115dp"
         tools:layout_editor_absoluteY="161dp" />
-
-    <Button
-        android:id="@+id/changeView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="changeView"
-        android:text="Button"
-        tools:layout_editor_absoluteX="231dp"
-        tools:layout_editor_absoluteY="67dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

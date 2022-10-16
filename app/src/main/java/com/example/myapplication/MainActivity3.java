@@ -6,20 +6,18 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
-import android.provider.MediaStore;
-import android.content.Intent;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.security.PrivateKey;
-
-public class MainActivity extends AppCompatActivity {
+public class MainActivity3 extends AppCompatActivity {
     private static final int picId = 1;
     private static final int CAMERA_PERMISSION_CODE = 100;
 
@@ -30,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main4);
 
         // By ID we can get each component which id is assigned in XML file get Buttons and imageview.
         camera = findViewById(R.id.camera);
@@ -53,13 +51,13 @@ public class MainActivity extends AppCompatActivity {
     // Function to check and request permission.
     public void checkPermission(String permission, int requestCode)
     {
-        if (ContextCompat.checkSelfPermission(MainActivity.this, permission) == PackageManager.PERMISSION_DENIED) {
+        if (ContextCompat.checkSelfPermission(MainActivity3.this, permission) == PackageManager.PERMISSION_DENIED) {
 
             // Requesting the permission
-            ActivityCompat.requestPermissions(MainActivity.this, new String[] { permission }, requestCode);
+            ActivityCompat.requestPermissions(MainActivity3.this, new String[] { permission }, requestCode);
         }
         else {
-            Toast.makeText(MainActivity.this, "Permission already granted", Toast.LENGTH_SHORT).show();
+            Toast.makeText(MainActivity3.this, "Permission already granted", Toast.LENGTH_SHORT).show();
             cameraPerm.setVisibility(View.GONE);
         }
     }
@@ -74,11 +72,11 @@ public class MainActivity extends AppCompatActivity {
 
         if (requestCode == CAMERA_PERMISSION_CODE) {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                Toast.makeText(MainActivity.this, "Camera Permission Granted", Toast.LENGTH_SHORT) .show();
+                Toast.makeText(MainActivity3.this, "Camera Permission Granted", Toast.LENGTH_SHORT) .show();
                 cameraPerm.setVisibility(View.INVISIBLE);
             }
             else {
-                Toast.makeText(MainActivity.this, "Camera Permission Denied", Toast.LENGTH_SHORT) .show();
+                Toast.makeText(MainActivity3.this, "Camera Permission Denied", Toast.LENGTH_SHORT) .show();
             }
         }
     }
@@ -89,10 +87,6 @@ public class MainActivity extends AppCompatActivity {
         TextView treeCounter = findViewById(R.id.treeCounter);
         treeCounter.setText("Number of trees: " + treeNum++);
 
-    }
-    public void changeView(View view){
-        Intent intent = new Intent(this,MainActivity3.class);
-        startActivity(intent);
     }
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
