@@ -101,59 +101,59 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // By ID we can get each component which id is assigned in XML file get Buttons and imageview.
-        camera = findViewById(R.id.camera);
-        click_image_id = findViewById(R.id.proof);
-        cameraPerm = findViewById(R.id.cameraPer);
-        cameraPerm.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                checkPermission(Manifest.permission.CAMERA, CAMERA_PERMISSION_CODE);
-            }
-        });
-        // Camera_open button is for open the camera and add the setOnClickListener in this button
-        camera.setOnClickListener(v -> {
-            // Create the camera_intent ACTION_IMAGE_CAPTURE it will open the camera for capture the image
-            Intent camera_intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-            // Start the activity with camera_intent, and request pic id
-            startActivityForResult(camera_intent, picId);
-        });
+//        // By ID we can get each component which id is assigned in XML file get Buttons and imageview.
+//        camera = findViewById(R.id.camera);
+//        click_image_id = findViewById(R.id.proof);
+//        cameraPerm = findViewById(R.id.cameraPer);
+//        cameraPerm.setOnClickListener(new View.OnClickListener(){
+//            @Override
+//            public void onClick(View v){
+//                checkPermission(Manifest.permission.CAMERA, CAMERA_PERMISSION_CODE);
+//            }
+//        });
+//        // Camera_open button is for open the camera and add the setOnClickListener in this button
+//        camera.setOnClickListener(v -> {
+//            // Create the camera_intent ACTION_IMAGE_CAPTURE it will open the camera for capture the image
+//            Intent camera_intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+//            // Start the activity with camera_intent, and request pic id
+//            startActivityForResult(camera_intent, picId);
+//        });
         quote = findViewById(R.id.quote);
         quote.setText(quotes[randomNum]);
-
+//
     }
-    // Function to check and request permission.
-    public void checkPermission(String permission, int requestCode)
-    {
-        if (ContextCompat.checkSelfPermission(MainActivity.this, permission) == PackageManager.PERMISSION_DENIED) {
-
-            // Requesting the permission
-            ActivityCompat.requestPermissions(MainActivity.this, new String[] { permission }, requestCode);
-        }
-        else {
-            Toast.makeText(MainActivity.this, "Permission already granted", Toast.LENGTH_SHORT).show();
-            cameraPerm.setVisibility(View.GONE);
-        }
-    }
-    @Override
-    public void onRequestPermissionsResult(int requestCode,
-                                           @NonNull String[] permissions,
-                                           @NonNull int[] grantResults)
-    {
-        super.onRequestPermissionsResult(requestCode,
-                permissions,
-                grantResults);
-
-        if (requestCode == CAMERA_PERMISSION_CODE) {
-            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                Toast.makeText(MainActivity.this, "Camera Permission Granted", Toast.LENGTH_SHORT) .show();
-                cameraPerm.setVisibility(View.INVISIBLE);
-            }
-            else {
-                Toast.makeText(MainActivity.this, "Camera Permission Denied", Toast.LENGTH_SHORT) .show();
-            }
-        }
-    }
+//    // Function to check and request permission.
+//    public void checkPermission(String permission, int requestCode)
+//    {
+//        if (ContextCompat.checkSelfPermission(MainActivity.this, permission) == PackageManager.PERMISSION_DENIED) {
+//
+//            // Requesting the permission
+//            ActivityCompat.requestPermissions(MainActivity.this, new String[] { permission }, requestCode);
+//        }
+//        else {
+//            Toast.makeText(MainActivity.this, "Permission already granted", Toast.LENGTH_SHORT).show();
+//            cameraPerm.setVisibility(View.GONE);
+//        }
+//    }
+//    @Override
+//    public void onRequestPermissionsResult(int requestCode,
+//                                           @NonNull String[] permissions,
+//                                           @NonNull int[] grantResults)
+//    {
+//        super.onRequestPermissionsResult(requestCode,
+//                permissions,
+//                grantResults);
+//
+//        if (requestCode == CAMERA_PERMISSION_CODE) {
+//            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+//                Toast.makeText(MainActivity.this, "Camera Permission Granted", Toast.LENGTH_SHORT) .show();
+//                cameraPerm.setVisibility(View.INVISIBLE);
+//            }
+//            else {
+//                Toast.makeText(MainActivity.this, "Camera Permission Denied", Toast.LENGTH_SHORT) .show();
+//            }
+//        }
+//    }
 
 
     static int treeNum = 0;
