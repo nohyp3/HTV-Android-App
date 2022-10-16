@@ -166,5 +166,13 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this,MainActivity2.class);
         startActivity(intent);
     }
+    public void changeView2(View view){
+        Intent intent = new Intent(this,MainActivity4.class);
+        startActivity(intent);
+    }
+    public void changeView3(View view){
+        Intent intent = new Intent(this,MainActivity5.class);
+        startActivity(intent);
+    }
 
 }
