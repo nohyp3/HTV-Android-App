@@ -94,14 +94,5 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this,MainActivity3.class);
         startActivity(intent);
     }
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        // Match the request 'pic id with requestCode
-        if (requestCode == picId) {
-            // BitMap is data structure of image file which store the image in memory
-            Bitmap photo = (Bitmap) data.getExtras().get("data");
-            // Set the image in imageview for display
-            click_image_id.setImageBitmap(photo);
-        }
-    }
+
 }
