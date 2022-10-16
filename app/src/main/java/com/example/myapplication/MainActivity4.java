@@ -37,19 +37,19 @@ public class MainActivity4 extends AppCompatActivity {
         TextView setEncourageText = findViewById(R.id.encourageText);
         pushupCountNum ++;
         setPushupCount.setText("Pushup Count: " + pushupCountNum);
-        if (pushupCountNum > 5){
+        if (pushupCountNum >= 5){
             setEncourageText.setText("You can do more than that!");
         }
-        if (pushupCountNum > 10){
+        if (pushupCountNum >= 10){
             setEncourageText.setText("Strength does not come from physical capacity.");
         }
-        if (pushupCountNum > 15) {
+        if (pushupCountNum >= 15) {
             setEncourageText.setText("The body achieves what the mind believes.");
         }
-        if (pushupCountNum > 20) {
+        if (pushupCountNum >= 20) {
             setEncourageText.setText("The last three or four reps is what makes the muscle grow.");
         }
-        if (pushupCountNum > 25) {
+        if (pushupCountNum >= 25) {
             setEncourageText.setText("What seems impossible today will one day become your warm-up.");
         }
     }
