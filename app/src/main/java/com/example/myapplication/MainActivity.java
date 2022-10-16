@@ -16,10 +16,26 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AppCompatActivity;
+
+import androidx.drawerlayout.widget.DrawerLayout;
+import android.os.Bundle;
+import android.view.MenuItem;
+
+import androidx.appcompat.app.ActionBar;
+
+import androidx.appcompat.widget.Toolbar;
 
 import java.security.PrivateKey;
 
 public class MainActivity extends AppCompatActivity {
+    //for drawer
+    public DrawerLayout drawerLayout;
+    public ActionBarDrawerToggle actionBarDrawerToggle;
+    //
+
     private static final int picId = 1;
     private static final int CAMERA_PERMISSION_CODE = 100;
 
@@ -31,6 +47,25 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Toolbar toolbar1 = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar1);
+        //////////////////////////////////
+        // drawer layout instance to toggle the menu icon to open
+        // drawer and back button to close drawer
+        drawerLayout = findViewById(R.id.my_drawer_layout);
+        actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.nav_open, R.string.nav_close);
+
+        // pass the Open and Close toggle for the drawer layout listener
+        // to toggle the button
+        drawerLayout.addDrawerListener(actionBarDrawerToggle);
+        actionBarDrawerToggle.syncState();
+
+        // to make the Navigation drawer icon always appear on the action bar
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        //////////////////////////////
+
+
 
         // By ID we can get each component which id is assigned in XML file get Buttons and imageview.
         camera = findViewById(R.id.camera);
@@ -50,6 +85,16 @@ public class MainActivity extends AppCompatActivity {
             startActivityForResult(camera_intent, picId);
         });
     }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
+        if (actionBarDrawerToggle.onOptionsItemSelected(item)) {
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
     // Function to check and request permission.
     public void checkPermission(String permission, int requestCode)
     {
@@ -90,6 +135,11 @@ public class MainActivity extends AppCompatActivity {
         treeCounter.setText("Number of trees: " + treeNum++);
 
     }
+
+    public void goToSwim(MenuItem item) {
+        startActivity(new Intent(MainActivity.this, SwimActivity.class));
+
+    }
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         // Match the request 'pic id with requestCode
@@ -100,4 +150,6 @@ public class MainActivity extends AppCompatActivity {
             click_image_id.setImageBitmap(photo);
         }
     }
+
+
 }
